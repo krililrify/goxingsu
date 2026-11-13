@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#080e1b">
   <meta name="description" content="星酥网络官方地址发布页，查看用户中心、备用线路和官网。">
-  <title>星酥网络 · 地址发布页</title>
+  <title>星酥于你同在 · 星酥网络</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23356af2'/%3E%3Cpath d='M20 5Q23 17 35 20Q23 23 20 35Q17 23 5 20Q17 17 20 5' fill='white'/%3E%3C/svg%3E">
   <style>
     :root {
@@ -194,7 +194,6 @@
       background: var(--surface);
     }
     a.favorite:hover { background: #172643; }
-    .favorite .address { font-family: inherit; }
     .notice { color: var(--muted); margin-top: 12px; }
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
@@ -203,7 +202,8 @@
       .topbar .wrap { min-height: 59px; }
       main { padding-top: 21px; }
       .hero { min-height: 195px; padding: 25px 20px; border-radius: 17px; }
-      .hero-copy { max-width: 76%; }
+      .hero-copy { max-width: 85%; }
+      h1 { font-size: clamp(30px, 7.4vw, 44px); }
       .hero p { margin-top: 10px; }
       .orb { right: -8%; width: 54%; opacity: .66; }
       section { margin-top: 25px; }
@@ -270,7 +270,7 @@ html.dark #xs-support .xs-copy small,[data-theme=dark] #xs-support .xs-copy smal
   <main class="wrap">
     <div class="hero">
       <div class="hero-copy">
-        <h1>地址发布页</h1>
+        <h1>星酥于你同在</h1>
         <p>选择下方任一地址，进入星酥网络用户端。</p>
       </div>
       <div class="orb" aria-hidden="true"><i class="orbit"></i><i class="core"></i></div>
@@ -316,10 +316,10 @@ html.dark #xs-support .xs-copy small,[data-theme=dark] #xs-support .xs-copy smal
     ];
 
     const favorites = [
-      { name: "收藏入口 01", url: "" },
-      { name: "收藏入口 02", url: "" },
-      { name: "收藏入口 03", url: "" },
-      { name: "收藏入口 04", url: "" }
+      { name: "xingsugo.com", url: "https://www.xingsugo.com/" },
+      { name: "xingsugo.uk", url: "https://xingsugo.uk/" },
+      { name: "xingsugo.org", url: "https://xingsugo.org/" },
+      { name: "xingsugo.cc", url: "https://xingsugo.cc/" }
     ];
 
     function parseAddress(value) {
@@ -338,7 +338,7 @@ html.dark #xs-support .xs-copy small,[data-theme=dark] #xs-support .xs-copy smal
       return element;
     }
 
-    function makeEntry(name, address, cssClass, nameClass) {
+    function makeEntry(name, address, cssClass, nameClass, showAddress = true) {
       const entry = document.createElement(address ? "a" : "div");
       entry.className = address ? cssClass : cssClass + " disabled";
       if (address) {
@@ -347,10 +347,11 @@ html.dark #xs-support .xs-copy small,[data-theme=dark] #xs-support .xs-copy smal
         entry.rel = "noopener noreferrer";
       }
       const text = makeText("span", "entry-label", "");
-      text.append(
-        makeText("span", nameClass, name),
-        makeText("span", "address", address ? address.host + (address.pathname === "/" ? "" : address.pathname) : "待配置")
-      );
+      text.append(makeText("span", nameClass, name));
+      if (showAddress || !address) {
+        const label = address ? address.host + (address.pathname === "/" ? "" : address.pathname) : "待配置";
+        text.append(makeText("span", "address", label));
+      }
       return { entry, text, arrow: document.getElementById("arrow").content.cloneNode(true) };
     }
 
@@ -373,7 +374,7 @@ html.dark #xs-support .xs-copy small,[data-theme=dark] #xs-support .xs-copy smal
 
     const favoritesList = document.getElementById("favorites");
     for (const favorite of favorites) {
-      const { entry, text, arrow } = makeEntry(favorite.name, parseAddress(favorite.url), "favorite", "favorite-name");
+      const { entry, text, arrow } = makeEntry(favorite.name, parseAddress(favorite.url), "favorite", "favorite-name", false);
       entry.append(text, arrow);
       favoritesList.append(entry);
     }

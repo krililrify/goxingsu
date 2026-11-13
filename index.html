@@ -285,16 +285,16 @@ html.dark #xs-support .xs-copy small,[data-theme=dark] #xs-support .xs-copy smal
       </div>
       <ul class="lines" id="lines"></ul>
       <div class="sr-only" id="check-result" role="status"></div>
-      <a class="official" href="https://www.xingsugo.com/" target="_blank" rel="noopener noreferrer">
+      <a class="official" href="https://www.xingsugo.net/dashboard">
         <span class="official-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="4" ry="8.5"/><path d="M3.5 12h17"/></svg>
         </span>
-        <span><strong class="line-name">星酥网络官网</strong><span class="address">www.xingsugo.com</span></span>
+        <span><strong class="line-name">进入星酥网络用户端</strong><span class="address">www.xingsugo.net</span></span>
         <svg class="arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
       </a>
     </section>
     <section aria-labelledby="favorites-title">
-      <h2 class="section-head" id="favorites-title">务必收藏</h2>
+      <h2 class="section-head" id="favorites-title">务必收藏 · 备用门户</h2>
       <div class="favorites" id="favorites"></div>
     </section>
     <noscript><p class="notice">启用 JavaScript 后可查看备用线路和收藏入口。</p></noscript>
@@ -311,7 +311,7 @@ html.dark #xs-support .xs-copy small,[data-theme=dark] #xs-support .xs-copy smal
       { name: "官网最新地址 1", url: "https://www.xingsugo.net/dashboard", checkUrl: "" },
       { name: "官网最新地址 2", url: "https://xingsugo.net/dashboard", checkUrl: "" },
       { name: "官网最新地址 3", url: "https://suyungo.flynet.cfd/dashboard", checkUrl: "" },
-      { name: "官网最新地址 4", url: "https://www.xingsugo.com/dashboard", checkUrl: "" },
+      { name: "官网最新地址 4", url: "https://www.xingsugo.net/login", checkUrl: "" },
       { name: "官网最新地址 5", url: "https://www.xingsugo.net/dashboard/", checkUrl: "" }
     ];
 
@@ -343,8 +343,6 @@ html.dark #xs-support .xs-copy small,[data-theme=dark] #xs-support .xs-copy smal
       entry.className = address ? cssClass : cssClass + " disabled";
       if (address) {
         entry.href = address.href;
-        entry.target = "_blank";
-        entry.rel = "noopener noreferrer";
       }
       const text = makeText("span", "entry-label", "");
       text.append(makeText("span", nameClass, name));
@@ -374,7 +372,12 @@ html.dark #xs-support .xs-copy small,[data-theme=dark] #xs-support .xs-copy smal
 
     const favoritesList = document.getElementById("favorites");
     for (const favorite of favorites) {
-      const { entry, text, arrow } = makeEntry(favorite.name, parseAddress(favorite.url), "favorite", "favorite-name", false);
+      const address = parseAddress(favorite.url);
+      const { entry, text, arrow } = makeEntry(favorite.name, address, "favorite", "favorite-name", false);
+      if (address) {
+        entry.target = "_blank";
+        entry.rel = "noopener noreferrer";
+      }
       entry.append(text, arrow);
       favoritesList.append(entry);
     }

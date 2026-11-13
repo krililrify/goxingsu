@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#080e1b">
+  <meta name="description" content="星酥网络官方地址发布页，查看用户中心、备用线路和官网。">
+  <title>星酥网络 · 地址发布页</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23356af2'/%3E%3Cpath d='M20 5Q23 17 35 20Q23 23 20 35Q17 23 5 20Q17 17 20 5' fill='white'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #080e1b;
+      --surface: #0f1829;
+      --border: #26334d;
+      --text: #f2f6ff;
+      --muted: #a4b2cc;
+      --blue: #9cbbff;
+      --cyan: #76e0e7;
+      --green: #8de4bd;
+      --amber: #ffd097;
+      --radius: 17px;
+    }
+
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: radial-gradient(ellipse at 75% -10%, #152649 0, transparent 52%), var(--bg);
+      font: 15px/1.6 Geist, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    :focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+    .wrap { max-width: 1100px; margin-inline: auto; padding-inline: 32px; }
+    .topbar { border-bottom: 1px solid #25334c; }
+    .topbar .wrap { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-size: 17px; font-weight: 720; letter-spacing: .04em; }
+    .brand svg { width: 33px; height: 33px; flex: none; }
+    .host { color: var(--muted); font: 13px/1.5 "IBM Plex Mono", ui-monospace, monospace; }
+    main { padding-top: 34px; padding-bottom: 52px; }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      align-items: center;
+      min-height: 254px;
+      padding: 43px 44px;
+      overflow: hidden;
+      border: 1px solid #31456b;
+      border-radius: 23px;
+      background: linear-gradient(105deg, #101c33 8%, #101a30 47%, #11234a 100%);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background-image: linear-gradient(#70a4ff13 1px, transparent 1px), linear-gradient(90deg, #70a4ff13 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(90deg, transparent 23%, #000 72%);
+    }
+    .hero-copy { max-width: 60%; }
+    h1, h2, p { margin: 0; }
+    h1 { font-size: clamp(33px, 5.1vw, 59px); line-height: 1.16; letter-spacing: -.055em; font-weight: 750; }
+    .hero p { margin-top: 18px; color: #b4c2dc; font-size: clamp(14px, 1.65vw, 16px); }
+    .orb {
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      right: 4%;
+      width: min(39%, 350px);
+      aspect-ratio: 1;
+      transform: translateY(-50%);
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle, #447cfe32 0, #387cfe11 38%, transparent 70%);
+    }
+    .orb::before, .orb::after, .orbit {
+      content: "";
+      position: absolute;
+      inset: 10%;
+      border: 1px solid #70a4ff45;
+      border-radius: 50%;
+    }
+    .orb::after { inset: 24%; border-style: dashed; border-color: #86c4ff55; }
+    .orbit { inset: 18% 4%; transform: rotate(-23deg); border-color: #7aafff52; }
+    .orbit::after {
+      content: "";
+      position: absolute;
+      right: 4.6%;
+      top: 21%;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #9ae9ff;
+      box-shadow: 0 0 16px 3px #69beff;
+    }
+    .core {
+      width: 25%;
+      aspect-ratio: 1;
+      transform: rotate(45deg);
+      border: 1px solid #7cb2ff9c;
+      border-radius: 21%;
+      background: linear-gradient(155deg, #94ceff49, #3265d716);
+      box-shadow: inset 0 0 23px #77b8ff3b, 0 0 45px #4a80ff49;
+    }
+    .core::after {
+      content: "";
+      position: absolute;
+      inset: 30%;
+      transform: rotate(-45deg);
+      background: #b3d8ff;
+      clip-path: polygon(50% 0, 61% 37%, 100% 50%, 61% 62%, 50% 100%, 38% 62%, 0 50%, 38% 37%);
+    }
+
+    section { margin-top: 31px; }
+    .section-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    h2 { font-size: 19px; letter-spacing: -.01em; font-weight: 690; }
+    .check-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border: 1px solid #344567;
+      border-radius: 8px;
+      background: #132039;
+      color: #d6e5ff;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .check-button:hover:not(:disabled) { background: #1b2e50; }
+    .check-button:disabled { opacity: .58; cursor: default; }
+    .check-button svg, .arrow { width: 16px; height: 16px; flex: none; }
+    .lines { margin: 0; padding: 0; list-style: none; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+    .lines li + li { border-top: 1px solid #253149; }
+    .line {
+      min-height: 63px;
+      padding: 9px 18px;
+      display: grid;
+      align-items: center;
+      grid-template-columns: 37px minmax(0, 1fr) auto 17px;
+      gap: 12px;
+    }
+    a.line:hover { background: #172643; }
+    a.line:focus-visible { outline-offset: -4px; }
+    .line-number {
+      display: grid;
+      place-items: center;
+      width: 33px;
+      height: 32px;
+      color: var(--blue);
+      background: #172643;
+      border: 1px solid #2b3e61;
+      border-radius: 8px;
+      font: 13px/1 "IBM Plex Mono", ui-monospace, monospace;
+    }
+    .line-name, .favorite-name { display: block; font-weight: 650; }
+    .address { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font: 12px/1.65 "IBM Plex Mono", ui-monospace, monospace; }
+    .status { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    .status[data-state="checking"] { color: var(--blue); }
+    .status[data-state="up"] { color: var(--green); }
+    .status[data-state="down"] { color: var(--amber); }
+    .line .arrow { grid-column: 4; }
+    .arrow { color: var(--blue); }
+    .disabled .arrow { visibility: hidden; }
+    .official {
+      margin-top: 16px;
+      padding: 16px 19px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      border: 1px solid #35568e;
+      border-radius: 13px;
+      background: linear-gradient(105deg, #172d56, #112141);
+    }
+    .official:hover { background: linear-gradient(105deg, #203d70, #15284d); }
+    .official-icon { display: grid; place-items: center; width: 37px; height: 37px; flex: none; border-radius: 9px; color: var(--blue); background: #25416d; }
+    .official-icon svg { width: 20px; height: 20px; }
+    .official .arrow { margin-left: auto; }
+    .favorites { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 11px; }
+    .favorite {
+      min-width: 0;
+      display: grid;
+      align-items: center;
+      grid-template-columns: minmax(0, 1fr) 16px;
+      gap: 7px;
+      padding: 13px 14px;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: var(--surface);
+    }
+    a.favorite:hover { background: #172643; }
+    .favorite .address { font-family: inherit; }
+    .notice { color: var(--muted); margin-top: 12px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+    @media (max-width: 620px) {
+      .wrap { padding-inline: 16px; }
+      .topbar .wrap { min-height: 59px; }
+      main { padding-top: 21px; }
+      .hero { min-height: 195px; padding: 25px 20px; border-radius: 17px; }
+      .hero-copy { max-width: 76%; }
+      .hero p { margin-top: 10px; }
+      .orb { right: -8%; width: 54%; opacity: .66; }
+      section { margin-top: 25px; }
+      .line { min-height: 59px; padding-inline: 11px; grid-template-columns: 29px minmax(0, 1fr) auto 14px; gap: 8px; }
+      .line-number { width: 27px; height: 29px; }
+      .line .arrow { width: 14px; }
+      .favorites { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .line, .official, .favorite, .check-button { transition: background .18s ease; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        <svg aria-hidden="true" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#356af2"/><path d="M20 5Q23 17 35 20Q23 23 20 35Q17 23 5 20Q17 17 20 5" fill="white"/></svg>
+        <span>星酥网络</span>
+      </div>
+      <span class="host">go.xingsugo.uk</span>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="hero">
+      <div class="hero-copy">
+        <h1>地址发布页</h1>
+        <p>查找星酥网络的最新入口和备用地址。</p>
+      </div>
+      <div class="orb" aria-hidden="true"><i class="orbit"></i><i class="core"></i></div>
+    </div>
+    <section aria-labelledby="lines-title">
+      <div class="section-head">
+        <h2 id="lines-title">访问线路</h2>
+        <button class="check-button" id="recheck" type="button" disabled>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 8a7 7 0 0 1 11-2l3 4M4 14l3 4a7 7 0 0 0 11-2"/></svg>
+          <span>重新检测</span>
+        </button>
+      </div>
+      <ul class="lines" id="lines"></ul>
+      <div class="sr-only" id="check-result" role="status"></div>
+      <a class="official" href="https://www.xingsugo.com/" target="_blank" rel="noopener noreferrer">
+        <span class="official-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="4" ry="8.5"/><path d="M3.5 12h17"/></svg>
+        </span>
+        <span><strong class="line-name">星酥网络官网</strong><span class="address">www.xingsugo.com</span></span>
+        <svg class="arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+    </section>
+    <section aria-labelledby="favorites-title">
+      <h2 class="section-head" id="favorites-title">务必收藏</h2>
+      <div class="favorites" id="favorites"></div>
+    </section>
+    <noscript><p class="notice">启用 JavaScript 后可查看备用线路和收藏入口。</p></noscript>
+  </main>
+
+  <template id="arrow">
+    <svg class="arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+  </template>
+  <script>
+    // 地址配置：替换每项的 url，填写完整的 https:// 地址。
+    // 可选 checkUrl：填允许此发布页跨域 GET 的探测地址，确认返回 2xx 才会标绿。
+    // 空地址会显示为待配置，等域名就绪后填入即可。
+    const lines = [
+      { name: "用户中心", url: "https://www.xingsugo.net/dashboard", checkUrl: "" },
+      { name: "备用线路 02 · 登录", url: "https://www.xingsugo.net/login", checkUrl: "" },
+      { name: "备用线路 03 · 注册", url: "https://www.xingsugo.net/register", checkUrl: "" },
+      { name: "备用线路 04 · 备用域名", url: "https://suyungo.flynet.cfd/dashboard", checkUrl: "" },
+      { name: "备用线路 05 · 使用文档", url: "https://www.xingsugo.com/docs", checkUrl: "" }
+    ];
+
+    const favorites = [
+      { name: "收藏入口 01", url: "" },
+      { name: "收藏入口 02", url: "" },
+      { name: "收藏入口 03", url: "" },
+      { name: "收藏入口 04", url: "" }
+    ];
+
+    function parseAddress(value) {
+      try {
+        const address = new URL(value);
+        return address.protocol === "https:" && !address.username && !address.password ? address : null;
+      } catch {
+        return null;
+      }
+    }
+
+    function makeText(tag, cssClass, value) {
+      const element = document.createElement(tag);
+      element.className = cssClass;
+      element.textContent = value;
+      return element;
+    }
+
+    function makeEntry(name, address, cssClass, nameClass) {
+      const entry = document.createElement(address ? "a" : "div");
+      entry.className = address ? cssClass : cssClass + " disabled";
+      if (address) {
+        entry.href = address.href;
+        entry.target = "_blank";
+        entry.rel = "noopener noreferrer";
+      }
+      const text = makeText("span", "entry-label", "");
+      text.append(
+        makeText("span", nameClass, name),
+        makeText("span", "address", address ? address.host : "待配置")
+      );
+      return { entry, text, arrow: document.getElementById("arrow").content.cloneNode(true) };
+    }
+
+    const lineList = document.getElementById("lines");
+    const pendingChecks = [];
+    for (const [index, line] of lines.entries()) {
+      const address = parseAddress(line.url);
+      const checkUrl = address && parseAddress(line.checkUrl);
+      const { entry, text, arrow } = makeEntry(line.name, address, "line", "line-name");
+      const status = makeText("span", "status", checkUrl ? "等待检测" : "未检测");
+      const number = makeText("span", "line-number", String(index + 1).padStart(2, "0"));
+      number.setAttribute("aria-hidden", "true");
+      if (checkUrl) pendingChecks.push({ checkUrl, status });
+      if (!address) status.hidden = true;
+      entry.append(number, text, status, arrow);
+      const item = document.createElement("li");
+      item.append(entry);
+      lineList.append(item);
+    }
+
+    const favoritesList = document.getElementById("favorites");
+    for (const favorite of favorites) {
+      const { entry, text, arrow } = makeEntry(favorite.name, parseAddress(favorite.url), "favorite", "favorite-name");
+      entry.append(text, arrow);
+      favoritesList.append(entry);
+    }
+
+    const recheck = document.getElementById("recheck");
+    const checkResult = document.getElementById("check-result");
+    if (!pendingChecks.length) recheck.hidden = true;
+
+    async function checkLines() {
+      recheck.disabled = true;
+      const buttonLabel = recheck.querySelector("span");
+      buttonLabel.textContent = "检测中…";
+      const checks = await Promise.all(pendingChecks.map(async ({ checkUrl, status }) => {
+        status.dataset.state = "checking";
+        status.textContent = "检测中";
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 5000);
+        let available = false;
+        try {
+          const response = await fetch(checkUrl.href, {
+            mode: "cors",
+            cache: "no-store",
+            redirect: "error",
+            signal: controller.signal
+          });
+          available = response.ok;
+        } catch {
+          // 超时、跨域受限或网络异常时，仍保留手动打开入口。
+        } finally {
+          clearTimeout(timeout);
+        }
+        status.dataset.state = available ? "up" : "down";
+        status.textContent = available ? "可访问" : "检测未通过";
+        return available;
+      }));
+      checkResult.textContent = `检测完成，${checks.filter(Boolean).length} 条线路可访问。`;
+      buttonLabel.textContent = "重新检测";
+      recheck.disabled = false;
+    }
+
+    if (pendingChecks.length) {
+      recheck.addEventListener("click", checkLines);
+      checkLines();
+    }
+  </script>
+</body>
+</html>

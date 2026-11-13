@@ -232,13 +232,13 @@
     <div class="hero">
       <div class="hero-copy">
         <h1>地址发布页</h1>
-        <p>查找星酥网络的最新入口和备用地址。</p>
+        <p>选择下方任一地址，进入星酥网络用户端。</p>
       </div>
       <div class="orb" aria-hidden="true"><i class="orbit"></i><i class="core"></i></div>
     </div>
     <section aria-labelledby="lines-title">
       <div class="section-head">
-        <h2 id="lines-title">访问线路</h2>
+        <h2 id="lines-title">官网最新地址</h2>
         <button class="check-button" id="recheck" type="button" disabled>
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 8a7 7 0 0 1 11-2l3 4M4 14l3 4a7 7 0 0 0 11-2"/></svg>
           <span>重新检测</span>
@@ -269,11 +269,11 @@
     // 可选 checkUrl：填允许此发布页跨域 GET 的探测地址，确认返回 2xx 才会标绿。
     // 空地址会显示为待配置，等域名就绪后填入即可。
     const lines = [
-      { name: "用户中心", url: "https://www.xingsugo.net/dashboard", checkUrl: "" },
-      { name: "备用线路 02 · 登录", url: "https://www.xingsugo.net/login", checkUrl: "" },
-      { name: "备用线路 03 · 注册", url: "https://www.xingsugo.net/register", checkUrl: "" },
-      { name: "备用线路 04 · 备用域名", url: "https://suyungo.flynet.cfd/dashboard", checkUrl: "" },
-      { name: "备用线路 05 · 使用文档", url: "https://www.xingsugo.com/docs", checkUrl: "" }
+      { name: "官网最新地址 1", url: "https://www.xingsugo.net/dashboard", checkUrl: "" },
+      { name: "官网最新地址 2", url: "https://xingsugo.net/dashboard", checkUrl: "" },
+      { name: "官网最新地址 3", url: "https://suyungo.flynet.cfd/dashboard", checkUrl: "" },
+      { name: "官网最新地址 4", url: "https://www.xingsugo.com/dashboard", checkUrl: "" },
+      { name: "官网最新地址 5", url: "https://www.xingsugo.net/dashboard/", checkUrl: "" }
     ];
 
     const favorites = [
@@ -310,7 +310,7 @@
       const text = makeText("span", "entry-label", "");
       text.append(
         makeText("span", nameClass, name),
-        makeText("span", "address", address ? address.host : "待配置")
+        makeText("span", "address", address ? address.host + (address.pathname === "/" ? "" : address.pathname) : "待配置")
       );
       return { entry, text, arrow: document.getElementById("arrow").content.cloneNode(true) };
     }
